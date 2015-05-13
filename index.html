@@ -55,20 +55,25 @@
 
                 <div id="playlist">
                     <div class="current-video">
-                        <p>{{ youtube.videoTitle }}</p>
+                        <p>{{youtube.videoTitle}}</p>
                     </div>
-                    <div class="upcoming-video row" ng-repeat="video in playlist">
-                        <p class="pull-right delete" ng-click="delete(video)">DELETE</p>
-                        <p class="playlist-title" ng-click="playVideo(video)">{{ video.title}}</p>
+                    <div class="upcoming-video row" ng-repeat="video in playlist track by $index">
+                        <p class="pull-right delete" ng-click="delete($index)">DELETE</p>
+                        <p class="playlist-title" ng-click="playVideoFromPlaylist($index)">{{video.title}}</p>
+                    </div>
+                    <h3>HISTORY</h3>
+                    <div class="upcoming-video row" ng-repeat="video in history track by $index">
+                        <p class="pull-right delete" ng-click="deleteFromHistory($index)">DELETE</p>
+                        <p class="playlist-title" ng-click="playVideoFromHistory($index)">{{video.title}}</p>
                     </div>
                 </div>
             </div>
             <div id="search-results" class="col-sm-6 col-md-6 col-lg-6">
-                <div class="result" ng-repeat="result in results" ng-click="queue(result)">
-                    <img class="img-responsive thumbnail" ng-src="{{ result.thumbnail}}" alt="result.title">
-                    <h3>{{ result.title}}</h3>
-                    <p class="red">{{ result.author}}</p>
-                    <p>{{ result.description}}</p>
+                <div class="result" ng-repeat="result in results track by $index" ng-click="queue(result)">
+                    <img class="img-responsive thumbnail" ng-src="{{result.thumbnail}}" alt="result.title">
+                    <h3>{{result.title}}</h3>
+                    <p class="red">{{result.author}}</p>
+                    <p>{{result.description}}</p>
                 </div>
             </div>
         </div>
@@ -82,20 +87,20 @@
 
         <!-- Google Analytics -->
         <script>
-                                (function (b, o, i, l, e, r) {
-                                    b.GoogleAnalyticsObject = l;
-                                    b[l] || (b[l] =
-                                            function () {
-                                                (b[l].q = b[l].q || []).push(arguments)
-                                            });
-                                    b[l].l = +new Date;
-                                    e = o.createElement(i);
-                                    r = o.getElementsByTagName(i)[0];
-                                    e.src = '//www.google-analytics.com/analytics.js';
-                                    r.parentNode.insertBefore(e, r)
-                                }(window, document, 'script', 'ga'));
-                                ga('create', 'UA-60332501-2', 'auto');
-                                ga('send', 'pageview');
+            (function(b, o, i, l, e, r) {
+                b.GoogleAnalyticsObject = l;
+                b[l] || (b[l] =
+                    function() {
+                        (b[l].q = b[l].q || []).push(arguments)
+                    });
+                b[l].l = +new Date;
+                e = o.createElement(i);
+                r = o.getElementsByTagName(i)[0];
+                e.src = '//www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+            ga('create', 'UA-60332501-2', 'auto');
+            ga('send', 'pageview');                                                            
         </script>
     </body>
 </html>
