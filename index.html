@@ -49,22 +49,36 @@
 
         <div class="container">
             <div id="video-and-playlist" class="col-sm-6 col-md-6 col-lg-6">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <div id="player"></div>
+                <div id="video">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div id="player"></div>
+                    </div>
                 </div>
 
-                <div id="playlist">
+                <div id="lists">
                     <div class="current-video">
                         <p>{{youtube.videoTitle}}</p>
                     </div>
-                    <div class="upcoming-video row" ng-repeat="video in playlist track by $index">
-                        <p class="pull-right delete" ng-click="delete($index)">DELETE</p>
-                        <p class="playlist-title" ng-click="playVideoFromPlaylist($index)">{{video.title}}</p>
+                    <div class="flex">
+                        <div class="playlist playlist-headline" ng-class="{'active':!showHistory}" ng-click="displayPlaylist()"><h3 class="extra-margin-left-04">PLAYLIST</h3></div>
+                        <div class="playlist playlist-headline" ng-class="{'active':showHistory}" ng-click="displayHistory()"><h3 class="extra-margin-left-04">HISTORY</h3></div>
                     </div>
-                    <h3>HISTORY</h3>
-                    <div class="upcoming-video row" ng-repeat="video in history track by $index">
-                        <p class="pull-right delete" ng-click="deleteFromHistory($index)">DELETE</p>
-                        <p class="playlist-title" ng-click="playVideoFromHistory($index)">{{video.title}}</p>
+                    <div class="flip">
+                        <div card class="card" ng-class="{'flipped':showHistory}">
+                            <div id="playlist" class="face front active">
+                                <div class="col-sm-12 col-md-12 col-lg-12 playlist row" card-add ng-repeat="video in playlist track by $index">
+                                    <p class="pull-right delete" ng-click="delete($index)">DELETE</p>
+                                    <p class="playlist-title" ng-click="playVideoFromPlaylist($index)">{{video.title}}</p>
+                                </div>
+                            </div>
+
+                            <div id="history" class="face back active">
+                                <div class="col-sm-12 col-md-12 col-lg-12 playlist row" card-add ng-repeat="video in history track by $index">
+                                    <p class="pull-right delete" ng-click="deleteFromHistory($index)">DELETE</p>
+                                    <p class="playlist-title" ng-click="playVideoFromHistory($index)">{{video.title}}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,23 +98,25 @@
         <script>window.angular || document.write('<script src="js/vendor/angular.min.js"><\/script>');</script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
+        <!-- Only used while I learn how to do this stuff in Angular -->
+        <script src="js/extra.js"></script>
 
         <!-- Google Analytics -->
         <script>
             (function(b, o, i, l, e, r) {
-                b.GoogleAnalyticsObject = l;
+            b.GoogleAnalyticsObject = l;
                 b[l] || (b[l] =
-                    function() {
-                        (b[l].q = b[l].q || []).push(arguments)
-                    });
-                b[l].l = +new Date;
+                function() {
+                (b[l].q = b[l].q || []).push(arguments)
+                });
+                b[l].l = + new Date;
                 e = o.createElement(i);
                 r = o.getElementsByTagName(i)[0];
                 e.src = '//www.google-analytics.com/analytics.js';
                 r.parentNode.insertBefore(e, r)
             }(window, document, 'script', 'ga'));
             ga('create', 'UA-60332501-2', 'auto');
-            ga('send', 'pageview');                                                            
+            ga('send', 'pageview');
         </script>
     </body>
 </html>

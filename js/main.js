@@ -142,6 +142,7 @@ boxTube.controller('youtubeController', ['$scope', '$http', 'youtubeService', fu
         $scope.results = youtubeService.getResults();
         $scope.playlist = youtubeService.getPlaylist();
         $scope.history = youtubeService.getHistory();
+        $scope.showHistory = false;
     }
 
     $scope.search = function() {
@@ -185,6 +186,14 @@ boxTube.controller('youtubeController', ['$scope', '$http', 'youtubeService', fu
 
     $scope.playVideoFromHistory = function(index) {
         youtubeService.playVideoFromHistory(index);
+    };
+
+    $scope.displayPlaylist = function() {
+        $scope.showHistory = false;
+    };
+
+    $scope.displayHistory = function() {
+        $scope.showHistory = true;
     };
 
 }]);

@@ -136,23 +136,75 @@ body {
 }
 
 .current-video {
-    background-color: #555;
+    background-color: #302f30;
     color: white;
     padding: 0.5em;
     border-bottom: thin solid lightgray;
 }
 
-.upcoming-video:hover {
+.playlist:hover {
     background-color: #555;
     color: white;
 }
 
-.upcoming-video p {
+.playlist p {
     margin: 0 0 0 10px;
+}
+
+.playlist-headline {
+    width: 50%;
+    background-color: #302f30;
+    color: white;
+}
+
+.playlist-headline:hover {
+    background-color: #302f30;
+    cursor: pointer;
 }
 
 .playlist-title {
     cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+}
+
+.extra-margin-left-04 {
+    margin-left: 0.4em;
+}
+
+.active {
+    background-color: #1B1B1B;
+    color: white;
+}
+
+.flip {
+    -webkit-perspective: 800;
+    perspective: 800;
+    position: relative;
+}
+.flip .card.flipped {
+    -webkit-transform: rotateY(-180deg);
+}
+.flip .card {
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+}
+.flip .card .face {
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    z-index: 2;
+}
+.flip .card .front {
+    z-index: 1;
+}
+.flip .card .back {
+    -webkit-transform: rotateY(-180deg);
 }
 
 /* ==========================================================================
