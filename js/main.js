@@ -148,7 +148,7 @@ boxTube.controller('youtubeController', ['$scope', '$http', 'youtubeService', fu
     $scope.search = function() {
         $http.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
-                    key: 'AIzaSyBS-Ne64g25XjGDEYl5U96fRi7CvbpQ73w   ',
+                    key: 'AIzaSyBS-Ne64g25XjGDEYl5U96fRi7CvbpQ73w',
                     type: 'video',
                     maxResults: '8',
                     part: 'id,snippet',
