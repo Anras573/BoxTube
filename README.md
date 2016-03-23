@@ -26,3 +26,6 @@ BoxTube is an attempt to simplify this scenario.
 ## Requirements
 
 You only need a valid [YouTube Data API v3 key](https://developers.google.com/youtube/v3/) to copy-paste in **main.js**.
+
+## TODO
+Rebuild the entire application in Angular 2.0
